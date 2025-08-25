@@ -2,6 +2,7 @@ pipeline{
     agent{
         docker{
             image "cypress/browsers:latest"
+            args '--entrypoint='
         }
     }
     stages{
@@ -12,7 +13,7 @@ pipeline{
         }
         stage('install dependances'){
             steps{
-                sh "npx cypress install"
+                sh "npm ci"
             }
         }
         stage('Run tests'){
